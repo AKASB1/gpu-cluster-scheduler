@@ -1,0 +1,30 @@
+# Go
+bin/
+*.test
+*.out
+coverage.out
+vendor/
+
+# Python simulator / analysis
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local config / runtime
+.env
+.env.*
+!.env.example
+logs/
+tmp/
+outputs/
+benchmarks/results/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
