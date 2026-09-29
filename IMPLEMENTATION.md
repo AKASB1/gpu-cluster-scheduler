@@ -53,3 +53,7 @@ Measure:
 8. Prometheus metrics
 9. Kubernetes scheduling-framework adapter
 10. optimization-based policy experiments
+
+## Scaffold checkpoint
+
+The in-memory job/cluster model and deterministic FIFO loop are implemented. Best-fit is exposed as a helper. Gang placement, preemption execution, metrics exporters, and Kubernetes integration remain planned.

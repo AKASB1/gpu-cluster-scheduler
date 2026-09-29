@@ -75,3 +75,7 @@ See [IMPLEMENTATION.md](IMPLEMENTATION.md).
 ## License
 
 MIT
+
+## Available now
+
+A deterministic in-memory scheduling path provides job/node records, FIFO placement, a best-fit helper, and a capacity-aware simulator. Run `go test ./...` and `go run ./cmd/scheduler`. Kubernetes integration is planned.

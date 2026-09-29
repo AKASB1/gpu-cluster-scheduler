@@ -1,0 +1,1 @@
+{"policy": "fifo", "nodes": [{"name": "local", "free_gpus": 2}]}
