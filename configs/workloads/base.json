@@ -1,0 +1,30 @@
+{
+  "jobs": 2000,
+  "work_capacity": 0,
+  "arrival": {"process": "poisson", "load": 0.8},
+  "sizes": [
+    {"weight": 0.48, "gpus": 1, "workers": 1},
+    {"weight": 0.15, "gpus": 2, "workers": 1},
+    {"weight": 0.15, "gpus": 4, "workers": 1},
+    {"weight": 0.13, "gpus": 8, "workers": 1},
+    {"weight": 0.02, "gpus": 4, "workers": 2, "topology": "node", "topo_frac": 1.0},
+    {"weight": 0.04, "gpus": 8, "workers": 2, "topology": "rack", "topo_frac": 0.7},
+    {"weight": 0.02, "gpus": 8, "workers": 4, "topology": "rack", "topo_frac": 0.7},
+    {"weight": 0.01, "gpus": 1, "workers": 16, "topology": "any"}
+  ],
+  "runtime": {"user_median_s": 1200, "user_sigma": 1.0, "job_sigma": 0.8, "min_s": 60, "max_s": 86400},
+  "tenants": [
+    {"name": "t0", "weight": 0.4, "users": 8},
+    {"name": "t1", "weight": 0.3, "users": 8},
+    {"name": "t2", "weight": 0.2, "users": 8},
+    {"name": "t3", "weight": 0.1, "users": 8}
+  ],
+  "priorities": [
+    {"priority": 1, "weight": 0.5, "preemptible_frac": 1.0},
+    {"priority": 4, "weight": 0.4, "preemptible_frac": 0.5, "max_wait_s": 7200},
+    {"priority": 8, "weight": 0.1, "preemptible_frac": 0.0, "max_wait_s": 900}
+  ],
+  "checkpoint_interval_s": 1800,
+  "resources": {"cpus_per_gpu": 12, "mem_gb_per_gpu": 96, "cpu_heavy_frac": 0.1, "cpu_heavy_per_gpu": 16, "mem_heavy_frac": 0.05, "mem_heavy_gb_per_gpu": 128},
+  "estimate": {"model": "exact"}
+}

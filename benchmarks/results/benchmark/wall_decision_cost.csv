@@ -1,0 +1,16 @@
+policy,pending,repetitions,wall_ns_per_op_min,wall_ns_per_op_median,wall_ns_per_op_max,bytes_per_op,allocs_per_op
+fifo+first_fit+none,64,5,41310,44173,47928,145977,89
+fifo+first_fit+none,512,5,85228,93801,113767,149564,89
+fifo+first_fit+none,4096,5,326836,333210,345956,178351,89
+fifo+first_fit+easy,64,5,228708,252969,291271,214114,116
+fifo+first_fit+easy,512,5,818395,847262,870427,653878,516
+fifo+first_fit+easy,4096,5,3540191,3606139,3687766,683810,516
+fifo+best_fit+none,64,5,343113,358078,383509,317835,139
+fifo+best_fit+none,512,5,376655,391019,413311,321434,139
+fifo+best_fit+none,4096,5,461332,484123,518350,350256,139
+fifo+least_fragmentation+none,64,5,360387,384277,419295,317834,139
+fifo+least_fragmentation+none,512,5,366717,399298,448717,321432,139
+fifo+least_fragmentation+none,4096,5,506259,550871,557971,350282,139
+drf+first_fit+none,64,5,91516,99347,100791,81768,107
+drf+first_fit+none,512,5,167464,185986,211053,166559,139
+drf+first_fit+none,4096,5,500577,510276,525435,281928,152

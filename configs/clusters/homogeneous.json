@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "name": "homogeneous",
+  "classes": [{"name": "a100", "speed": 1.0}],
+  "node_groups": [
+    {"count": 4, "prefix": "r0-n", "rack": "r0", "class": "a100", "gpus": 8, "cpus": 128, "mem_gb": 1024},
+    {"count": 4, "prefix": "r1-n", "rack": "r1", "class": "a100", "gpus": 8, "cpus": 128, "mem_gb": 1024},
+    {"count": 4, "prefix": "r2-n", "rack": "r2", "class": "a100", "gpus": 8, "cpus": 128, "mem_gb": 1024},
+    {"count": 4, "prefix": "r3-n", "rack": "r3", "class": "a100", "gpus": 8, "cpus": 128, "mem_gb": 1024}
+  ],
+  "cross_node_factor": 1.1,
+  "cross_rack_factor": 1.25,
+  "restart_overhead_s": 120,
+  "preempt_grace_s": 0,
+  "sources": {
+    "node": "derived: 8 GPUs, 128 CPU cores, 1024 GB per node as in NVIDIA's published DGX A100 system specification",
+    "speed": "a100 is the reference class (speed 1.0)",
+    "cross_node_factor": "assumed",
+    "cross_rack_factor": "assumed",
+    "restart_overhead_s": "assumed"
+  }
+}
