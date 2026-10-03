@@ -1,0 +1,2001 @@
+{
+ "name": "benchmark",
+ "baseline": "fifo+first_fit+none",
+ "tuning_seeds": [
+  1001,
+  1002,
+  1003,
+  1004,
+  1005
+ ],
+ "eval_seeds": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20
+ ],
+ "weights": {
+  "alpha": 1,
+  "beta": 1,
+  "gamma": 1,
+  "delta": 1,
+  "epsilon": 1
+ },
+ "tuning": {
+  "configurations": 8,
+  "search_seed": 7
+ },
+ "defaults_scenario": "s1-load80",
+ "scenarios": [
+  {
+   "id": "s1-load60",
+   "group": "S1",
+   "note": "order, backfill, and placement comparison, exact estimates",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.6
+    }
+   },
+   "policies": [
+    "fifo+{placement}+{backfill}",
+    "priority+{placement}+{backfill}",
+    "shortest_estimate+{placement}+{backfill}",
+    "drf+{placement}+{backfill}",
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle",
+    "{order}+first_fit+{backfill}",
+    "{order}+best_fit+{backfill}",
+    "{order}+least_fragmentation+{backfill}",
+    "{order}+topology_aware+{backfill}"
+   ]
+  },
+  {
+   "id": "s1-load80",
+   "group": "S1",
+   "note": "order, backfill, and placement comparison, exact estimates",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.8
+    }
+   },
+   "policies": [
+    "fifo+{placement}+{backfill}",
+    "priority+{placement}+{backfill}",
+    "shortest_estimate+{placement}+{backfill}",
+    "drf+{placement}+{backfill}",
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle",
+    "{order}+first_fit+{backfill}",
+    "{order}+best_fit+{backfill}",
+    "{order}+least_fragmentation+{backfill}",
+    "{order}+topology_aware+{backfill}"
+   ]
+  },
+  {
+   "id": "s1-load95",
+   "group": "S1",
+   "note": "order, backfill, and placement comparison, exact estimates",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.95
+    }
+   },
+   "policies": [
+    "fifo+{placement}+{backfill}",
+    "priority+{placement}+{backfill}",
+    "shortest_estimate+{placement}+{backfill}",
+    "drf+{placement}+{backfill}",
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle",
+    "{order}+first_fit+{backfill}",
+    "{order}+best_fit+{backfill}",
+    "{order}+least_fragmentation+{backfill}",
+    "{order}+topology_aware+{backfill}"
+   ]
+  },
+  {
+   "id": "s2-80-exact",
+   "group": "S2",
+   "note": "backfilling under estimate error",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.8
+    },
+    "estimate": {
+     "model": "exact"
+    }
+   },
+   "policies": [
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle"
+   ]
+  },
+  {
+   "id": "s2-80-lognormal",
+   "group": "S2",
+   "note": "backfilling under estimate error",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.8
+    },
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle"
+   ]
+  },
+  {
+   "id": "s2-80-user",
+   "group": "S2",
+   "note": "backfilling under estimate error",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.8
+    },
+    "estimate": {
+     "model": "user",
+     "p_exact": 0.15,
+     "p_under": 0.1,
+     "under_min": 0.5,
+     "under_max": 0.95,
+     "acc_min": 0.05,
+     "popular_s": [
+      900,
+      1800,
+      3600,
+      7200,
+      14400,
+      28800,
+      43200,
+      86400,
+      172800
+     ]
+    }
+   },
+   "policies": [
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle"
+   ]
+  },
+  {
+   "id": "s2-95-exact",
+   "group": "S2",
+   "note": "backfilling under estimate error",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.95
+    },
+    "estimate": {
+     "model": "exact"
+    }
+   },
+   "policies": [
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle"
+   ]
+  },
+  {
+   "id": "s2-95-lognormal",
+   "group": "S2",
+   "note": "backfilling under estimate error",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.95
+    },
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle"
+   ]
+  },
+  {
+   "id": "s2-95-user",
+   "group": "S2",
+   "note": "backfilling under estimate error",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.95
+    },
+    "estimate": {
+     "model": "user",
+     "p_exact": 0.15,
+     "p_under": 0.1,
+     "under_min": 0.5,
+     "under_max": 0.95,
+     "acc_min": 0.05,
+     "popular_s": [
+      900,
+      1800,
+      3600,
+      7200,
+      14400,
+      28800,
+      43200,
+      86400,
+      172800
+     ]
+    }
+   },
+   "policies": [
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle"
+   ]
+  },
+  {
+   "id": "s3-stream",
+   "group": "S3",
+   "note": "fragmentation: small jobs plus 8-32 GPU gangs",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.85
+    },
+    "sizes": [
+     {
+      "weight": 0.35,
+      "gpus": 1,
+      "workers": 1
+     },
+     {
+      "weight": 0.25,
+      "gpus": 2,
+      "workers": 1
+     },
+     {
+      "weight": 0.2,
+      "gpus": 4,
+      "workers": 1
+     },
+     {
+      "weight": 0.08,
+      "gpus": 8,
+      "workers": 1
+     },
+     {
+      "weight": 0.04,
+      "gpus": 4,
+      "workers": 2,
+      "topology": "node",
+      "topo_frac": 1.0
+     },
+     {
+      "weight": 0.05,
+      "gpus": 8,
+      "workers": 2,
+      "topology": "rack",
+      "topo_frac": 0.7
+     },
+     {
+      "weight": 0.03,
+      "gpus": 8,
+      "workers": 4,
+      "topology": "rack",
+      "topo_frac": 0.7
+     }
+    ]
+   },
+   "policies": [
+    "{order}+first_fit+{backfill}",
+    "{order}+best_fit+{backfill}",
+    "{order}+least_fragmentation+{backfill}",
+    "{order}+topology_aware+{backfill}"
+   ]
+  },
+  {
+   "id": "s3-batch",
+   "group": "S3",
+   "note": "fragmentation, batch: every job at time 0 (makespan)",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "jobs": 300,
+    "arrival": {
+     "process": "batch",
+     "load": null
+    },
+    "sizes": [
+     {
+      "weight": 0.35,
+      "gpus": 1,
+      "workers": 1
+     },
+     {
+      "weight": 0.25,
+      "gpus": 2,
+      "workers": 1
+     },
+     {
+      "weight": 0.2,
+      "gpus": 4,
+      "workers": 1
+     },
+     {
+      "weight": 0.08,
+      "gpus": 8,
+      "workers": 1
+     },
+     {
+      "weight": 0.04,
+      "gpus": 4,
+      "workers": 2,
+      "topology": "node",
+      "topo_frac": 1.0
+     },
+     {
+      "weight": 0.05,
+      "gpus": 8,
+      "workers": 2,
+      "topology": "rack",
+      "topo_frac": 0.7
+     },
+     {
+      "weight": 0.03,
+      "gpus": 8,
+      "workers": 4,
+      "topology": "rack",
+      "topo_frac": 0.7
+     }
+    ]
+   },
+   "policies": [
+    "{order}+first_fit+{backfill}",
+    "{order}+best_fit+{backfill}",
+    "{order}+least_fragmentation+{backfill}",
+    "{order}+topology_aware+{backfill}"
+   ]
+  },
+  {
+   "id": "s4-hetero",
+   "group": "S4",
+   "note": "heterogeneous cluster with class-constrained jobs",
+   "cluster": "configs/clusters/heterogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.8
+    },
+    "class_constraints": [
+     {
+      "class": "a100",
+      "frac": 0.15
+     },
+     {
+      "class": "v100",
+      "frac": 0.15
+     }
+    ]
+   },
+   "policies": [
+    "{order}+first_fit+{backfill}",
+    "{order}+best_fit+{backfill}",
+    "{order}+least_fragmentation+{backfill}",
+    "{order}+topology_aware+{backfill}"
+   ]
+  },
+  {
+   "id": "s5-tenants",
+   "group": "S5",
+   "note": "multi-tenant with one heavy tenant",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.9
+    },
+    "tenants": [
+     {
+      "name": "t0",
+      "weight": 0.55,
+      "users": 8
+     },
+     {
+      "name": "t1",
+      "weight": 0.15,
+      "users": 8
+     },
+     {
+      "name": "t2",
+      "weight": 0.15,
+      "users": 8
+     },
+     {
+      "name": "t3",
+      "weight": 0.15,
+      "users": 8
+     }
+    ]
+   },
+   "policies": [
+    "fifo+{placement}+{backfill}",
+    "priority+{placement}+{backfill}",
+    "drf+{placement}+{backfill}"
+   ]
+  },
+  {
+   "id": "s6-ckpt-none",
+   "group": "S6",
+   "note": "high-priority bursts and preemption",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.75
+    },
+    "burst": {
+     "mean_gap_s": 21600,
+     "jobs": 30,
+     "spread_s": 600,
+     "priority": 9,
+     "max_wait_s": 600
+    },
+    "checkpoint_interval_s": 0,
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "priority+{placement}+{backfill}",
+    "priority+{placement}+{backfill}+preempt",
+    "fifo+{placement}+{backfill}"
+   ]
+  },
+  {
+   "id": "s6-ckpt-short",
+   "group": "S6",
+   "note": "high-priority bursts and preemption",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.75
+    },
+    "burst": {
+     "mean_gap_s": 21600,
+     "jobs": 30,
+     "spread_s": 600,
+     "priority": 9,
+     "max_wait_s": 600
+    },
+    "checkpoint_interval_s": 600,
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "priority+{placement}+{backfill}",
+    "priority+{placement}+{backfill}+preempt",
+    "fifo+{placement}+{backfill}"
+   ]
+  },
+  {
+   "id": "s6-ckpt-long",
+   "group": "S6",
+   "note": "high-priority bursts and preemption",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.75
+    },
+    "burst": {
+     "mean_gap_s": 21600,
+     "jobs": 30,
+     "spread_s": 600,
+     "priority": 9,
+     "max_wait_s": 600
+    },
+    "checkpoint_interval_s": 3600,
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "priority+{placement}+{backfill}",
+    "priority+{placement}+{backfill}+preempt",
+    "fifo+{placement}+{backfill}"
+   ]
+  },
+  {
+   "id": "s7-bursty",
+   "group": "S7",
+   "note": "bursty arrivals (gamma renewal, CV 4)",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "process": "gamma",
+     "load": 0.8,
+     "cv": 4
+    }
+   },
+   "policies": [
+    "fifo+{placement}+{backfill}",
+    "priority+{placement}+{backfill}",
+    "shortest_estimate+{placement}+{backfill}",
+    "drf+{placement}+{backfill}",
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle",
+    "{order}+first_fit+{backfill}",
+    "{order}+best_fit+{backfill}",
+    "{order}+least_fragmentation+{backfill}",
+    "{order}+topology_aware+{backfill}"
+   ]
+  },
+  {
+   "id": "s7-diurnal",
+   "group": "S7",
+   "note": "diurnal arrivals (amplitude 0.8, period 24 h)",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "process": "diurnal",
+     "load": 0.8,
+     "amplitude": 0.8,
+     "period_s": 86400
+    }
+   },
+   "policies": [
+    "fifo+{placement}+{backfill}",
+    "priority+{placement}+{backfill}",
+    "shortest_estimate+{placement}+{backfill}",
+    "drf+{placement}+{backfill}",
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle",
+    "{order}+first_fit+{backfill}",
+    "{order}+best_fit+{backfill}",
+    "{order}+least_fragmentation+{backfill}",
+    "{order}+topology_aware+{backfill}"
+   ]
+  },
+  {
+   "id": "s8-small",
+   "group": "S8",
+   "kind": "milp-small",
+   "note": "MILP gap, node-model optimum",
+   "cluster": "configs/clusters/s8-small.json",
+   "workload": "configs/workloads/s8-small.json",
+   "policies": [
+    "fifo+{placement}+{backfill}",
+    "priority+{placement}+{backfill}",
+    "shortest_estimate+{placement}+{backfill}",
+    "drf+{placement}+{backfill}",
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle",
+    "{order}+first_fit+{backfill}",
+    "{order}+best_fit+{backfill}",
+    "{order}+least_fragmentation+{backfill}",
+    "{order}+topology_aware+{backfill}"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50
+   ],
+   "slot_s": 300,
+   "time_limit_s": 120
+  },
+  {
+   "id": "s8-medium",
+   "group": "S8",
+   "kind": "milp-medium",
+   "note": "MILP gap to the pool-model lower bound",
+   "cluster": "configs/clusters/s8-medium.json",
+   "workload": "configs/workloads/s8-medium.json",
+   "policies": [
+    "fifo+{placement}+{backfill}",
+    "priority+{placement}+{backfill}",
+    "shortest_estimate+{placement}+{backfill}",
+    "drf+{placement}+{backfill}",
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle",
+    "{order}+first_fit+{backfill}",
+    "{order}+best_fit+{backfill}",
+    "{order}+least_fragmentation+{backfill}",
+    "{order}+topology_aware+{backfill}"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50
+   ],
+   "slot_s": 300,
+   "node_limit": 20000,
+   "time_limit_s": 60
+  },
+  {
+   "id": "s9-online",
+   "group": "S9",
+   "note": "online MILP against the best baselines",
+   "cluster": "configs/clusters/s8-medium.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "jobs": 200,
+    "arrival": {
+     "load": 0.85
+    },
+    "sizes": [
+     {
+      "weight": 0.48,
+      "gpus": 1,
+      "workers": 1
+     },
+     {
+      "weight": 0.15,
+      "gpus": 2,
+      "workers": 1
+     },
+     {
+      "weight": 0.15,
+      "gpus": 4,
+      "workers": 1
+     },
+     {
+      "weight": 0.14,
+      "gpus": 8,
+      "workers": 1
+     },
+     {
+      "weight": 0.02,
+      "gpus": 4,
+      "workers": 2,
+      "topology": "node",
+      "topo_frac": 1.0
+     },
+     {
+      "weight": 0.06,
+      "gpus": 8,
+      "workers": 2,
+      "topology": "rack",
+      "topo_frac": 0.7
+     }
+    ],
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "py:milp_rolling",
+    "{order}+{placement}+{backfill}",
+    "shortest_estimate+{placement}+{backfill}",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+none"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ]
+  },
+  {
+   "id": "sens-s2-est-x0.5",
+   "group": "SENS",
+   "note": "sensitivity of s2-80-lognormal: estimate error (lognormal sigma) x0.5",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.8
+    },
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.25
+    }
+   },
+   "policies": [
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "tuned_from": "s2-80-lognormal",
+   "assumption": "estimate error (lognormal sigma)",
+   "scale": 0.5
+  },
+  {
+   "id": "sens-s2-topo-x0.5",
+   "group": "SENS",
+   "note": "sensitivity of s2-80-lognormal: topology penalty (f - 1) x0.5",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.8
+    },
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "tuned_from": "s2-80-lognormal",
+   "assumption": "topology penalty (f - 1)",
+   "scale": 0.5,
+   "penalty_scale": 0.5
+  },
+  {
+   "id": "sens-s2-est-x2",
+   "group": "SENS",
+   "note": "sensitivity of s2-80-lognormal: estimate error (lognormal sigma) x2",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.8
+    },
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 1.0
+    }
+   },
+   "policies": [
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "tuned_from": "s2-80-lognormal",
+   "assumption": "estimate error (lognormal sigma)",
+   "scale": 2
+  },
+  {
+   "id": "sens-s2-topo-x2",
+   "group": "SENS",
+   "note": "sensitivity of s2-80-lognormal: topology penalty (f - 1) x2",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.8
+    },
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "tuned_from": "s2-80-lognormal",
+   "assumption": "topology penalty (f - 1)",
+   "scale": 2,
+   "penalty_scale": 2
+  },
+  {
+   "id": "sens-s2-load-m10",
+   "group": "SENS",
+   "note": "sensitivity of s2-80-lognormal: offered load (points) x-10",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.7
+    },
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "tuned_from": "s2-80-lognormal",
+   "assumption": "offered load (points)",
+   "scale": -10
+  },
+  {
+   "id": "sens-s2-load-p10",
+   "group": "SENS",
+   "note": "sensitivity of s2-80-lognormal: offered load (points) x10",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.9
+    },
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy_oracle"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "tuned_from": "s2-80-lognormal",
+   "assumption": "offered load (points)",
+   "scale": 10
+  },
+  {
+   "id": "sens-s6-est-x0.5",
+   "group": "SENS",
+   "note": "sensitivity of s6-ckpt-short: estimate error (lognormal sigma) x0.5",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.75
+    },
+    "burst": {
+     "mean_gap_s": 21600,
+     "jobs": 30,
+     "spread_s": 600,
+     "priority": 9,
+     "max_wait_s": 600
+    },
+    "checkpoint_interval_s": 600,
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.25
+    }
+   },
+   "policies": [
+    "priority+{placement}+{backfill}",
+    "priority+{placement}+{backfill}+preempt",
+    "fifo+{placement}+{backfill}"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "tuned_from": "s6-ckpt-short",
+   "assumption": "estimate error (lognormal sigma)",
+   "scale": 0.5
+  },
+  {
+   "id": "sens-s6-ovh-x0.5",
+   "group": "SENS",
+   "note": "sensitivity of s6-ckpt-short: restart overhead and checkpoint interval x0.5",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.75
+    },
+    "burst": {
+     "mean_gap_s": 21600,
+     "jobs": 30,
+     "spread_s": 600,
+     "priority": 9,
+     "max_wait_s": 600
+    },
+    "checkpoint_interval_s": 300.0,
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "priority+{placement}+{backfill}",
+    "priority+{placement}+{backfill}+preempt",
+    "fifo+{placement}+{backfill}"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "tuned_from": "s6-ckpt-short",
+   "assumption": "restart overhead and checkpoint interval",
+   "scale": 0.5,
+   "overhead_scale": 0.5
+  },
+  {
+   "id": "sens-s6-topo-x0.5",
+   "group": "SENS",
+   "note": "sensitivity of s6-ckpt-short: topology penalty (f - 1) x0.5",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.75
+    },
+    "burst": {
+     "mean_gap_s": 21600,
+     "jobs": 30,
+     "spread_s": 600,
+     "priority": 9,
+     "max_wait_s": 600
+    },
+    "checkpoint_interval_s": 600,
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "priority+{placement}+{backfill}",
+    "priority+{placement}+{backfill}+preempt",
+    "fifo+{placement}+{backfill}"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "tuned_from": "s6-ckpt-short",
+   "assumption": "topology penalty (f - 1)",
+   "scale": 0.5,
+   "penalty_scale": 0.5
+  },
+  {
+   "id": "sens-s6-est-x2",
+   "group": "SENS",
+   "note": "sensitivity of s6-ckpt-short: estimate error (lognormal sigma) x2",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.75
+    },
+    "burst": {
+     "mean_gap_s": 21600,
+     "jobs": 30,
+     "spread_s": 600,
+     "priority": 9,
+     "max_wait_s": 600
+    },
+    "checkpoint_interval_s": 600,
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 1.0
+    }
+   },
+   "policies": [
+    "priority+{placement}+{backfill}",
+    "priority+{placement}+{backfill}+preempt",
+    "fifo+{placement}+{backfill}"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "tuned_from": "s6-ckpt-short",
+   "assumption": "estimate error (lognormal sigma)",
+   "scale": 2
+  },
+  {
+   "id": "sens-s6-ovh-x2",
+   "group": "SENS",
+   "note": "sensitivity of s6-ckpt-short: restart overhead and checkpoint interval x2",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.75
+    },
+    "burst": {
+     "mean_gap_s": 21600,
+     "jobs": 30,
+     "spread_s": 600,
+     "priority": 9,
+     "max_wait_s": 600
+    },
+    "checkpoint_interval_s": 1200,
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "priority+{placement}+{backfill}",
+    "priority+{placement}+{backfill}+preempt",
+    "fifo+{placement}+{backfill}"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "tuned_from": "s6-ckpt-short",
+   "assumption": "restart overhead and checkpoint interval",
+   "scale": 2,
+   "overhead_scale": 2
+  },
+  {
+   "id": "sens-s6-topo-x2",
+   "group": "SENS",
+   "note": "sensitivity of s6-ckpt-short: topology penalty (f - 1) x2",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.75
+    },
+    "burst": {
+     "mean_gap_s": 21600,
+     "jobs": 30,
+     "spread_s": 600,
+     "priority": 9,
+     "max_wait_s": 600
+    },
+    "checkpoint_interval_s": 600,
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "priority+{placement}+{backfill}",
+    "priority+{placement}+{backfill}+preempt",
+    "fifo+{placement}+{backfill}"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "tuned_from": "s6-ckpt-short",
+   "assumption": "topology penalty (f - 1)",
+   "scale": 2,
+   "penalty_scale": 2
+  },
+  {
+   "id": "s10-lognormal",
+   "group": "S10",
+   "note": "uncertainty-aware backfilling (risk = EASY with a run-time quantile)",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.9
+    },
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "{order}+{placement}+easy",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+risk",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_oracle"
+   ]
+  },
+  {
+   "id": "s10-shift-lognormal",
+   "group": "S10",
+   "note": "distribution shift: lognormal sigma 0.5 -> 1.0; tuning frozen on s10-lognormal",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.9
+    },
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 1.0
+    }
+   },
+   "policies": [
+    "{order}+{placement}+easy",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+risk",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_oracle"
+   ],
+   "tuned_from": "s10-lognormal",
+   "assumption": "estimate error shift (lognormal sigma 0.5 -> 1.0)",
+   "scale": 2
+  },
+  {
+   "id": "s10-user",
+   "group": "S10",
+   "note": "uncertainty-aware backfilling (risk = EASY with a run-time quantile)",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.9
+    },
+    "estimate": {
+     "model": "user",
+     "p_exact": 0.15,
+     "p_under": 0.1,
+     "under_min": 0.5,
+     "under_max": 0.95,
+     "acc_min": 0.05,
+     "popular_s": [
+      900,
+      1800,
+      3600,
+      7200,
+      14400,
+      28800,
+      43200,
+      86400,
+      172800
+     ]
+    }
+   },
+   "policies": [
+    "{order}+{placement}+easy",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+risk",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_oracle"
+   ]
+  },
+  {
+   "id": "s10-shift-user",
+   "group": "S10",
+   "note": "distribution shift: user-style: underestimates 10% -> 20%, accuracy floor 0.05 -> 0.025; tuning frozen on s10-user",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.9
+    },
+    "estimate": {
+     "model": "user",
+     "p_exact": 0.15,
+     "p_under": 0.2,
+     "under_min": 0.5,
+     "under_max": 0.95,
+     "acc_min": 0.025,
+     "popular_s": [
+      900,
+      1800,
+      3600,
+      7200,
+      14400,
+      28800,
+      43200,
+      86400,
+      172800
+     ]
+    }
+   },
+   "policies": [
+    "{order}+{placement}+easy",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+risk",
+    "{order}+{placement}+conservative",
+    "{order}+{placement}+easy_oracle"
+   ],
+   "tuned_from": "s10-user",
+   "assumption": "estimate error shift (user-style: underestimates 10% -> 20%, accuracy floor 0.05 -> 0.025)",
+   "scale": 2
+  },
+  {
+   "id": "s11-online",
+   "group": "S11",
+   "note": "two-stage stochastic MILP against the deterministic MILP and the baselines",
+   "cluster": "configs/clusters/s8-medium.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "jobs": 200,
+    "arrival": {
+     "load": 0.85
+    },
+    "sizes": [
+     {
+      "weight": 0.48,
+      "gpus": 1,
+      "workers": 1
+     },
+     {
+      "weight": 0.15,
+      "gpus": 2,
+      "workers": 1
+     },
+     {
+      "weight": 0.15,
+      "gpus": 4,
+      "workers": 1
+     },
+     {
+      "weight": 0.14,
+      "gpus": 8,
+      "workers": 1
+     },
+     {
+      "weight": 0.02,
+      "gpus": 4,
+      "workers": 2,
+      "topology": "node",
+      "topo_frac": 1.0
+     },
+     {
+      "weight": 0.06,
+      "gpus": 8,
+      "workers": 2,
+      "topology": "rack",
+      "topo_frac": 0.7
+     }
+    ],
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 0.5
+    }
+   },
+   "policies": [
+    "py:scenario_milp",
+    "py:milp_rolling",
+    "{order}+{placement}+risk",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ]
+  },
+  {
+   "id": "s11-shift",
+   "group": "S11",
+   "note": "distribution shift: lognormal sigma 0.5 -> 1.0; tuning frozen on s11-online",
+   "cluster": "configs/clusters/s8-medium.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "jobs": 200,
+    "arrival": {
+     "load": 0.85
+    },
+    "sizes": [
+     {
+      "weight": 0.48,
+      "gpus": 1,
+      "workers": 1
+     },
+     {
+      "weight": 0.15,
+      "gpus": 2,
+      "workers": 1
+     },
+     {
+      "weight": 0.15,
+      "gpus": 4,
+      "workers": 1
+     },
+     {
+      "weight": 0.14,
+      "gpus": 8,
+      "workers": 1
+     },
+     {
+      "weight": 0.02,
+      "gpus": 4,
+      "workers": 2,
+      "topology": "node",
+      "topo_frac": 1.0
+     },
+     {
+      "weight": 0.06,
+      "gpus": 8,
+      "workers": 2,
+      "topology": "rack",
+      "topo_frac": 0.7
+     }
+    ],
+    "estimate": {
+     "model": "lognormal",
+     "mu": 0,
+     "sigma": 1.0
+    }
+   },
+   "policies": [
+    "py:scenario_milp",
+    "py:milp_rolling",
+    "{order}+{placement}+risk",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+easy"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "tuned_from": "s11-online",
+   "assumption": "estimate error shift (lognormal sigma 0.5 -> 1.0)",
+   "scale": 2
+  },
+  {
+   "id": "s12-hetero-free",
+   "group": "S12",
+   "note": "heterogeneous cluster, no class constraints: class-blind vs hetero_ect",
+   "cluster": "configs/clusters/heterogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.8
+    }
+   },
+   "policies": [
+    "{order}+first_fit+{backfill}",
+    "{order}+best_fit+{backfill}",
+    "{order}+topology_aware+{backfill}",
+    "{order}+hetero_ect+{backfill}"
+   ]
+  },
+  {
+   "id": "s12-hetero-pinned",
+   "group": "S12",
+   "note": "heterogeneous cluster, 15% of jobs pinned to each class",
+   "cluster": "configs/clusters/heterogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.8
+    },
+    "class_constraints": [
+     {
+      "class": "a100",
+      "frac": 0.15
+     },
+     {
+      "class": "v100",
+      "frac": 0.15
+     }
+    ]
+   },
+   "policies": [
+    "{order}+first_fit+{backfill}",
+    "{order}+best_fit+{backfill}",
+    "{order}+topology_aware+{backfill}",
+    "{order}+hetero_ect+{backfill}"
+   ]
+  },
+  {
+   "id": "s14-quota",
+   "group": "S14",
+   "note": "quotas: one heavy tenant, equal nominal quotas, all jobs preemptible",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.9
+    },
+    "tenants": [
+     {
+      "name": "t0",
+      "weight": 0.55,
+      "users": 8
+     },
+     {
+      "name": "t1",
+      "weight": 0.15,
+      "users": 8
+     },
+     {
+      "name": "t2",
+      "weight": 0.15,
+      "users": 8
+     },
+     {
+      "name": "t3",
+      "weight": 0.15,
+      "users": 8
+     }
+    ],
+    "priorities": [
+     {
+      "priority": 1,
+      "weight": 0.5,
+      "preemptible_frac": 1.0
+     },
+     {
+      "priority": 4,
+      "weight": 0.4,
+      "preemptible_frac": 1.0,
+      "max_wait_s": 7200
+     },
+     {
+      "priority": 8,
+      "weight": 0.1,
+      "preemptible_frac": 1.0,
+      "max_wait_s": 900
+     }
+    ],
+    "checkpoint_interval_s": 600
+   },
+   "quota_shares": {
+    "t0": 0.25,
+    "t1": 0.25,
+    "t2": 0.25,
+    "t3": 0.25
+   },
+   "policies": [
+    "{order}+{placement}+{backfill}",
+    "{order}+{placement}+{backfill}+quota_strict",
+    "{order}+{placement}+{backfill}+quota",
+    "{order}+{placement}+{backfill}+quota+reclaim",
+    "drf+{placement}+{backfill}"
+   ]
+  },
+  {
+   "id": "s15-fail-ckpt-none",
+   "group": "S15",
+   "note": "node failures: jobs on a failed node are killed and requeued",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.8
+    },
+    "checkpoint_interval_s": 0
+   },
+   "failures": {
+    "mtbf_s": 345600,
+    "repair_s": 7200
+   },
+   "policies": [
+    "{order}+{placement}+{backfill}",
+    "fifo+{placement}+{backfill}"
+   ],
+   "zero_weights": [
+    "J_waste"
+   ]
+  },
+  {
+   "id": "s15-fail-ckpt-short",
+   "group": "S15",
+   "note": "node failures: jobs on a failed node are killed and requeued",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.8
+    },
+    "checkpoint_interval_s": 600
+   },
+   "failures": {
+    "mtbf_s": 345600,
+    "repair_s": 7200
+   },
+   "policies": [
+    "{order}+{placement}+{backfill}",
+    "fifo+{placement}+{backfill}"
+   ]
+  },
+  {
+   "id": "s15-fail-ckpt-long",
+   "group": "S15",
+   "note": "node failures: jobs on a failed node are killed and requeued",
+   "cluster": "configs/clusters/homogeneous.json",
+   "workload": "configs/workloads/base.json",
+   "overrides": {
+    "arrival": {
+     "load": 0.8
+    },
+    "checkpoint_interval_s": 3600
+   },
+   "failures": {
+    "mtbf_s": 345600,
+    "repair_s": 7200
+   },
+   "policies": [
+    "{order}+{placement}+{backfill}",
+    "fifo+{placement}+{backfill}"
+   ]
+  },
+  {
+   "id": "s13-helios-venus",
+   "group": "S13",
+   "note": "replayed jobs on a simulated cluster (Helios Venus, 3 days, synthetic estimates)",
+   "cluster": "",
+   "workload": "",
+   "replay": {
+    "format": "helios",
+    "log": "benchmarks/outputs/helios/data/Venus/cluster_log.csv",
+    "capacity": "benchmarks/outputs/helios/data/Venus/cluster_gpu_number.csv",
+    "start": "2020-08-10 00:00:00",
+    "tuning_start": "2020-08-03 00:00:00",
+    "days": 3,
+    "estimate": {
+     "model": "user",
+     "p_exact": 0.15,
+     "p_under": 0.1,
+     "under_min": 0.5,
+     "under_max": 0.95,
+     "acc_min": 0.05,
+     "popular_s": [
+      900,
+      1800,
+      3600,
+      7200,
+      14400,
+      28800,
+      43200,
+      86400,
+      172800
+     ]
+    }
+   },
+   "policies": [
+    "fifo+first_fit+easy",
+    "{order}+{placement}+none",
+    "{order}+{placement}+easy",
+    "{order}+{placement}+easy_predicted",
+    "{order}+{placement}+risk",
+    "fifo+{placement}+{backfill}",
+    "drf+{placement}+{backfill}"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ]
+  }
+ ],
+ "quick": {
+  "scenarios": [
+   "s1-load80",
+   "s2-95-user",
+   "s6-ckpt-short",
+   "s8-small",
+   "s9-online"
+  ],
+  "seeds": [
+   1,
+   2
+  ],
+  "jobs": 300,
+  "milp_instances": 3
+ },
+ "capacity": {
+  "workload": "configs/workloads/base.json",
+  "loads": [
+   0.6,
+   0.7,
+   0.8,
+   0.9,
+   1.0
+  ],
+  "tuned_from": "s1-load80",
+  "target_p95_wait_s": 3600,
+  "policies": [
+   "fifo+first_fit+none",
+   "fifo+{placement}+{backfill}",
+   "{order}+{placement}+{backfill}"
+  ],
+  "seeds": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "min_nodes": 8,
+  "max_nodes": 32
+ },
+ "sweep": {
+  "cluster": "configs/clusters/s8-small.json",
+  "workload": "configs/workloads/s8-small.json",
+  "jobs": [
+   4,
+   6,
+   8,
+   12,
+   16,
+   24,
+   32
+  ],
+  "slots_s": [
+   300,
+   150,
+   60
+  ],
+  "instances": 3,
+  "node_limit": 200000,
+  "time_limit_s": 15
+ },
+ "key_metrics": [
+  "wait_mean",
+  "wait_p95",
+  "wait_p99",
+  "jct_mean",
+  "jct_p95",
+  "bsld_mean",
+  "bsld_p95",
+  "bsld_p99",
+  "wflow_mean",
+  "wflow_sum_all",
+  "utilization",
+  "goodput_ratio",
+  "wasted_gpu_hours",
+  "lost_gpu_hours",
+  "overhead_gpu_hours",
+  "topology_gpu_hours",
+  "slack_gpu_hours",
+  "preemptions",
+  "frag_blocked_frac",
+  "stranded_frac",
+  "large_wait_mean",
+  "large_wait_p95",
+  "jain_bsld",
+  "tenant_worst_best_ratio",
+  "slo_attainment",
+  "makespan",
+  "reservations",
+  "broken_reservations",
+  "prio_9_wait_p95",
+  "prio_8_wait_p95",
+  "prio_1_wait_p95",
+  "prio_1_bsld_p95",
+  "tenant_t0_bsld_mean",
+  "tenant_t1_bsld_mean",
+  "tenant_t2_bsld_mean",
+  "tenant_t3_bsld_mean",
+  "tenant_t0_bsld_p95",
+  "tenant_t1_bsld_p95",
+  "tenant_t2_bsld_p95",
+  "tenant_t3_bsld_p95",
+  "quota_satisfaction",
+  "borrowed_gpu_hours",
+  "jain_weighted_bsld",
+  "failure_kills",
+  "node_downtime_gpu_hours"
+ ]
+}

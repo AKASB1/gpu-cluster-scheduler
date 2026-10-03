@@ -21,10 +21,16 @@ venv/
 logs/
 tmp/
 outputs/
-benchmarks/results/
+benchmarks/outputs/
 
 # IDE / OS
 .idea/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Private planning notes
+*.local.md
+
+# Agent tooling
+.claude/

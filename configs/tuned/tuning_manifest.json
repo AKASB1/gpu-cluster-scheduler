@@ -1,0 +1,64 @@
+{
+  "experiment": "benchmark",
+  "mode": "tune",
+  "command": "go run ./cmd/benchmark -tune",
+  "commit": "293e88b0a6c6ba2817df5203361ece1070a465e2",
+  "dirty": false,
+  "config_sha256": "7700b1d94b9076baa1c4d47880ea0c7e9804930b66ce1b85ac0b188e1584ce31",
+  "config_files": [
+    "configs/clusters/heterogeneous.json",
+    "configs/clusters/homogeneous.json",
+    "configs/clusters/s8-medium.json",
+    "configs/clusters/s8-small.json",
+    "configs/experiments/benchmark.json",
+    "configs/workloads/base.json",
+    "configs/workloads/s8-medium.json",
+    "configs/workloads/s8-small.json"
+  ],
+  "tuning_seeds": [
+    1001,
+    1002,
+    1003,
+    1004,
+    1005
+  ],
+  "eval_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "workers": 16,
+  "versions": {
+    "go": "go1.27.1",
+    "python": "3.12.3",
+    "scipy": "1.13.1",
+    "highs": "1.2.0"
+  },
+  "hardware": {
+    "cpu": "Intel(R) Core(TM) i9-14900KF",
+    "logical_cpus": 32,
+    "ram_gb": 95.8,
+    "os": "windows/amd64"
+  },
+  "load_note": "shared workstation: other processes (another agent run) may be active; wall_ values are indicative only",
+  "wall_started": "2026-10-01T17:11:07Z",
+  "wall_seconds": 1171.0134026,
+  "label": ""
+}

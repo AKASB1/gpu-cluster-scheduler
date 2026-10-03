@@ -1,0 +1,76 @@
+{
+  "jobs": 40,
+  "work_capacity": 0,
+  "arrival": {
+    "process": "poisson",
+    "load": 3.0
+  },
+  "sizes": [
+    {
+      "weight": 0.35,
+      "gpus": 1,
+      "workers": 1
+    },
+    {
+      "weight": 0.25,
+      "gpus": 2,
+      "workers": 1
+    },
+    {
+      "weight": 0.2,
+      "gpus": 4,
+      "workers": 1
+    },
+    {
+      "weight": 0.12,
+      "gpus": 8,
+      "workers": 1
+    },
+    {
+      "weight": 0.08,
+      "gpus": 8,
+      "workers": 2,
+      "topology": "rack",
+      "topo_frac": 0.5
+    }
+  ],
+  "runtime": {
+    "user_median_s": 900,
+    "user_sigma": 0.5,
+    "job_sigma": 0.5,
+    "min_s": 300,
+    "max_s": 1800
+  },
+  "tenants": [
+    {
+      "name": "t0",
+      "weight": 0.5,
+      "users": 2
+    },
+    {
+      "name": "t1",
+      "weight": 0.5,
+      "users": 2
+    }
+  ],
+  "priorities": [
+    {
+      "priority": 1,
+      "weight": 1.0,
+      "preemptible_frac": 0.0
+    }
+  ],
+  "checkpoint_interval_s": 0,
+  "resources": {
+    "cpus_per_gpu": 0,
+    "mem_gb_per_gpu": 0
+  },
+  "estimate": {
+    "model": "exact"
+  },
+  "slot_grid": {
+    "slot_s": 300,
+    "min_slots": 1,
+    "max_slots": 8
+  }
+}

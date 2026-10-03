@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "s8-small",
+  "classes": [
+    {
+      "name": "a100",
+      "speed": 1.0
+    }
+  ],
+  "nodes": [
+    {
+      "name": "n0",
+      "rack": "r0",
+      "class": "a100",
+      "gpus": 8,
+      "cpus": 128,
+      "mem_gb": 1024
+    },
+    {
+      "name": "n1",
+      "rack": "r0",
+      "class": "a100",
+      "gpus": 4,
+      "cpus": 64,
+      "mem_gb": 512
+    },
+    {
+      "name": "n2",
+      "rack": "r1",
+      "class": "a100",
+      "gpus": 4,
+      "cpus": 64,
+      "mem_gb": 512
+    },
+    {
+      "name": "n3",
+      "rack": "r1",
+      "class": "a100",
+      "gpus": 2,
+      "cpus": 32,
+      "mem_gb": 256
+    }
+  ],
+  "cross_node_factor": 1.1,
+  "cross_rack_factor": 1.25,
+  "restart_overhead_s": 120,
+  "preempt_grace_s": 0,
+  "sources": {
+    "all": "assumed: a small single-class cluster for exact MILP instances"
+  }
+}

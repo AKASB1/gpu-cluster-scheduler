@@ -1,0 +1,16 @@
+load,policy,target_p95_wait_s,min_nodes_meeting_target,min_gpus_meeting_target
+0.6,fifo+first_fit+none,3600,16,128
+0.6,fifo+topology_aware+easy_predicted,3600,13,104
+0.6,shortest_estimate+topology_aware+easy_predicted,3600,11,88
+0.7,fifo+first_fit+none,3600,17,136
+0.7,fifo+topology_aware+easy_predicted,3600,15,120
+0.7,shortest_estimate+topology_aware+easy_predicted,3600,12,96
+0.8,fifo+first_fit+none,3600,19,152
+0.8,fifo+topology_aware+easy_predicted,3600,16,128
+0.8,shortest_estimate+topology_aware+easy_predicted,3600,12,96
+0.9,fifo+first_fit+none,3600,21,168
+0.9,fifo+topology_aware+easy_predicted,3600,18,144
+0.9,shortest_estimate+topology_aware+easy_predicted,3600,13,104
+1,fifo+first_fit+none,3600,22,176
+1,fifo+topology_aware+easy_predicted,3600,19,152
+1,shortest_estimate+topology_aware+easy_predicted,3600,14,112
